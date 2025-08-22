@@ -12,8 +12,18 @@
 
       const product2 = {
         name: "shirt",
-        price: 900
+        price: 900,
+        // nested object
+        rating: {
+          starts: 4.5,
+          count: 87
+        },
+        fun: function function1() {
+          console.log('function inside object');
+        }
       };
+
+      product2.fun();
     </script>
   </body>
 </html>
