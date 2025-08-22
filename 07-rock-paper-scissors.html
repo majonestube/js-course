@@ -8,7 +8,9 @@
 <p>
   Rock Paper Scissors
 </p>
-
+<script>
+  
+</script>
 <button onclick="
   playGame('rock');
 ">Rock</button>
@@ -21,36 +23,23 @@
   playGame('paper');
 ">Paper</button>
 
-<p class='js-moves'></p>
-
-<p class="js-result"></p>
-
-<p class="js-score"></p>
-
-
 <button onclick="
   score.wins = 0;
   score.losses = 0;
   score.ties = 0;
   localStorage.removeItem('score');
-  updateScoreElemet();
 ">
   Reset score
 </button>
 
 <script>
   // example of default operator 
-  let score = JSON.parse(localStorage.getItem('score')) || {
+  const score = JSON.parse(localStorage.getItem('score')) || {
     wins: 0,
     losses: 0,
     ties: 0
   };
 
-  function updateScoreElement() {
-    document.querySelector('.js-score').innerHTML = 
-      `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`
-  }
-  
   function pickComputerMove() {
     const randomNumber = Math.random();
 
@@ -66,7 +55,6 @@
 
     return computerMove;
   }
-
 
   function playGame(chosenMove) {
     const computerMove = pickComputerMove();
@@ -107,11 +95,8 @@
     // local storage only supports strings
     localStorage.setItem('score', JSON.stringify(score));
 
-    updateScoreElement();
-
-    document.querySelector('.js-result').innerHTML = result;
-
-    document.querySelector('.js-moves').innerHTML = `You ${chosenMove} - ${computerMove} Computer`;
+    alert(`You picked ${chosenMove}. Computer picked ${computerMove}. ${result}
+Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`)
   }
 </script>
 
