@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Document object model
+    </title>
+  </head>
+  <body>
+    <button>
+      Hello
+    </button>
+    <button class="js-button">
+      Second button
+    </button>
+
+    <script>
+      // document.title = 'Good job!'
+
+      /*
+      console.log(document.body); // document.body is an object
+      console.log(document.body.innerHTML);
+
+      document.body.innerHTML = '<button>Good job!</button>';
+      */
+
+      // document.querySelector
+      // gets the first button element from the page
+      document.querySelector('button')
+        .innerHTML = 'Good job!';
+
+      // getting it with a class attribute 
+      // ps: common to use js first, to show it is used by js
+      document.querySelector('.js-button')
+        .innerHTML = 'Bad job!'
+
+      const buttonElement = document.querySelector('.js-button');
+    </script>
+  </body>
+</html>
