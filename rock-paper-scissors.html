@@ -6,53 +6,32 @@
   
 </script>
 <button onclick="
-  const computerMove= pickComputerMove();
-
-
-  let result = '';
- 
-  if (computerMove === 'rock') {
-    result = 'Tie';
-  } else if (computerMove === 'paper') {
-   result = 'You lose';
-   } else if (computerMove === 'scissors') {
-    result = 'You win';}
-
-    alert(`You picked rock. Computer picked ${computerMove}. ${result}`)
+  playGame('rock');
 ">Rock</button>
 
 <button onclick="
-  const computerMove = pickComputerMove();
-
-
-  let result = '';
-
-  if (computerMove === 'rock') {
-    result = 'You lose';
-  } else if (computerMove === 'paper') {
-   result = 'You win';
-   } else if (computerMove === 'scissors') {
-    result = 'Tie';}
-
-    alert(`You picked scissors. Computer picked ${computerMove}. ${result}`)
+  playGame('scissors');
 ">Scissors</button>
 
 <button onclick="
-  const computerMove = pickComputerMove();
-
-  let result = '';
-
-  if (computerMove === 'rock') {
-    result = 'You win';
-  } else if (computerMove === 'paper') {
-   result = 'Tie';
-   } else if (computerMove === 'scissors') {
-    result = 'You lose';}
-
-    alert(`You picked paper. Computer picked ${computerMove}. ${result}`)
+  playGame('paper');
 ">Paper</button>
 
+<button onclick="
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0
+">
+  Reset score
+</button>
+
 <script>
+  const score = {
+    wins: 0,
+    losses: 0,
+    ties : 0
+  };
+
   function pickComputerMove() {
     const randomNumber = Math.random();
 
@@ -67,6 +46,45 @@
         }
 
     return computerMove;
+  }
+
+  function playGame(chosenMove) {
+    const computerMove = pickComputerMove();
+    
+    let result = '';
+
+    if (computerMove == chosenMove) {
+      result = 'Tie.'
+    } else if (computerMove === 'paper') {
+      if (chosenMove === 'scissors') {
+        result = 'You win.'
+      } else {
+        result = 'You lose.'
+      }
+    } else if (computerMove === 'rock') {
+      if (chosenMove === 'paper') {
+        result = 'You win.'
+      } else {
+        result = 'You lose.'
+      }
+    } else {
+      if (chosenMove === 'rock') {
+        result = 'You win.'
+      } else {
+        result = 'You lose.'
+      }
+    }
+
+    if (result === "You win.") {
+      score.wins++;
+    } else if (result === "You lose.") {
+      score.losses++;
+    } else {
+      score.ties++;
+    }
+
+    alert(`You picked ${chosenMove}. Computer picked ${computerMove}. ${result}
+    Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`)
   }
 </script>
 
@@ -85,4 +103,8 @@ const message = 5 && 'hello'
 Default value:
 const currency = undefined || 'USD';
 -> USD becomes the default
+-->
+
+<!--
+Currently on 4:15:00
 -->
