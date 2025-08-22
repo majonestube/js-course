@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<head>
+  <title>
+    Rock paper scissors
+  </title>
+</head>
+<body>
 <p>
   Rock Paper Scissors
 </p>
@@ -20,16 +26,17 @@
 <button onclick="
   score.wins = 0;
   score.losses = 0;
-  score.ties = 0
+  score.ties = 0;
+  localStorage.removeItem('score');
 ">
   Reset score
 </button>
 
 <script>
-  const score = {
+  const score = JSON.parse(localStorage.getItem('score')) || {
     wins: 0,
     losses: 0,
-    ties : 0
+    ties: 0
   };
 
   function pickComputerMove() {
@@ -83,10 +90,16 @@
       score.ties++;
     }
 
+    // save the results
+    // local storage only supports strings
+    localStorage.setItem('score', JSON.stringify(score));
+
     alert(`You picked ${chosenMove}. Computer picked ${computerMove}. ${result}
 Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`)
   }
 </script>
+
+</body>
 
 <!--
 Tips til ternary operator:
