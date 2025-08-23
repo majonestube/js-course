@@ -65,9 +65,22 @@
 
       const object = {
         method() {
-
         }
       };
+
+      //filter
+      console.log([1, -3, 5].filter((value, index) => {
+        // value is included in the new array if true
+        return value >= 0;
+      }));
+
+      //map
+      console.log([1, 1, 3].map((value, index) => {
+        return value * 2;
+      }));
+
+      // shortcuts
+      console.log([1, 1, 3].map(value => value * 2));
     </script>
   </body>
 </html>
