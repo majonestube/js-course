@@ -4,10 +4,28 @@
     <title>Advanced function</title>
   </head>
   <body>
+    <button class="js-button">
+      Click
+    </button>
+
     <script>
+      const buttonElement = document.querySelector('.js-button');
+
+      const eventListener = () => {
+        console.log('click');
+      };
+      buttonElement.addEventListener('click', eventListener);
+
+
+      buttonElement.removeEventListener('click', eventListener);
+
+      buttonElement.addEventListener('click', () => {
+        console.log('click2');
+      });
+
       const function1 = function greeting() {
         console.log('hello');
-      }
+      };
 
       setTimeout(function() {
         console.log('timeout');
@@ -30,7 +48,7 @@
       const regularFunction = function(param) {
         console.log('hello');
         return 5;
-      }
+      };
 
       const arrowFunction = (param) => {
         console.log('hello');
@@ -49,7 +67,7 @@
         method() {
 
         }
-      }
+      };
     </script>
   </body>
 </html>
