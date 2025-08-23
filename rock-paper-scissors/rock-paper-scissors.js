@@ -1,45 +1,4 @@
-<!DOCTYPE html>
-<head>
-  <title>
-    Rock paper scissors
-  </title>
-</head>
-<body>
-<p>
-  Rock Paper Scissors
-</p>
-
-<button onclick="
-  playGame('rock');
-">Rock</button>
-
-<button onclick="
-  playGame('scissors');
-">Scissors</button>
-
-<button onclick="
-  playGame('paper');
-">Paper</button>
-
-<p class='js-moves'></p>
-
-<p class="js-result"></p>
-
-<p class="js-score"></p>
-
-
-<button onclick="
-  score.wins = 0;
-  score.losses = 0;
-  score.ties = 0;
-  localStorage.removeItem('score');
-  updateScoreElemet();
-">
-  Reset score
-</button>
-
-<script>
-  // example of default operator 
+ // example of default operator 
   let score = JSON.parse(localStorage.getItem('score')) || {
     wins: 0,
     losses: 0,
@@ -111,29 +70,6 @@
 
     document.querySelector('.js-result').innerHTML = result;
 
-    document.querySelector('.js-moves').innerHTML = `You ${chosenMove} - ${computerMove} Computer`;
+    document.querySelector('.js-moves').innerHTML = 
+      `You <img src="images/${chosenMove}-emoji.png" class="move-icon"> - <img src="images/${computerMove}-emoji.png" class="move-icon">Computer`;
   }
-</script>
-
-</body>
-
-<!--
-Tips til ternary operator:
-
-const result = 0 ? 'truthy' : 'falsy'
-
-Guard operator: 
-Can use "and" like an if (guard operator)
-
-const message = 5 && 'hello' 
--> Checks if the first condition is true. If it is, the second thing applies 
-
-
-Default value:
-const currency = undefined || 'USD';
--> USD becomes the default
--->
-
-<!--
-Currently on 4:15:00
--->
